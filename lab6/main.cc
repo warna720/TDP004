@@ -139,7 +139,7 @@ int main (int argc, char * argv [])
 	validateInput(argv);
 
 	int iterations	{stoi(argv[1])};
-	int prints		{stoi(argv[2])};
+	int prints	{stoi(argv[2])};
 	float timeunits {stof(argv[3])};
 	float batVolt	{stof(argv[4])};
 
