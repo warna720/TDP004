@@ -1,8 +1,6 @@
 #ifndef WORDS_H
 #define WORDS_H
 
-// Did not compile without including this in header
-// Even if we include them in word.cc
 #include <map>
 #include <vector>
 
