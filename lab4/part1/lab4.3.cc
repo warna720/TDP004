@@ -73,16 +73,6 @@ bool checkTriminoOrder(vector<int> const& trimino)
 
 bool checkTrimino(vector<int> trimino, int const& start, int const& end, int unsigned const& pass = 1)
 {
-	/*
-	Sorry Litborn, your idea that we twist trimino until smallest value
-	comes first did not work. 
-	What happens if it's a trimino with 15 50 15?
-	I doesn't twist because the smallest value is already first. :)
-
-	And we felt that making this function recursive was
-	simpler than to do more complicated tests.
-	We could also do this with a simple loop.
-	*/
 
 	if (pass > trimino.size())
  	{
