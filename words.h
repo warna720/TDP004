@@ -16,8 +16,8 @@ public:
 	bool addWord(string word, vector<string> & wordVector);
 
 	void printCleanList(const map<string, int> & cl);			//Labb1
-	void printOrderedCleanList(const map<string, int> & cl);	//Labb2
-	void printLongLine(const vector<string> wordVector);				//Labb3
+	void printOrderedCleanList(const map<string, int> & cl);		//Labb2
+	void printLongLine(const vector<string> wordVector);			//Labb3
 	void printWithLambda(vector<string> wordVector);			//Labb4
 
 private:
