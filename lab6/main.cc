@@ -133,9 +133,8 @@ void validateInput(char * argv [])
 	}
 }
 
-int main (int argc, char * argv [])
+int main (int, char * argv [])
 {
-	++argc; // shut up compiler
 	validateInput(argv);
 
 	int iterations	{stoi(argv[1])};
