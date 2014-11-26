@@ -113,9 +113,9 @@ void Words::filterDelete(string & word)
 
     while (word.length() > 0 && 
         (word.back() == '!' ||
-	     word.back() == '?' ||
+	 word.back() == '?' ||
     	 word.back() == ';' ||
-	     word.back() == ',' ||
+	 word.back() == ',' ||
     	 word.back() == ':' ||
     	 word.back() == '.' ||
     	 word.back() == ')' ||
