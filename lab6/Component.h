@@ -21,7 +21,6 @@ public:
 private:
 	std::string _name;
 
-	// lel
 	Component(const Component&);
     void operator=(const Component&);
 
