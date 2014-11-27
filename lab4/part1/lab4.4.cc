@@ -9,7 +9,8 @@ using namespace std;
 // Commented what's not so obvious
 
 void getIntInput(int & val, const string & message,
-				 const bool & checkMin = false, const int & end = 0)
+				const bool & checkMin = false, 
+				const int & end = 0)
 {
 	cout << message;
 	cin >> val;
@@ -18,7 +19,7 @@ void getIntInput(int & val, const string & message,
 	while(!cin || (checkMin && val <= end))
 	{
 
-		cout << "\nPlease behave..." << endl;
+		cerr << "\nWrong input. Input only integers." << endl;
 		cout << message;
 
 		cin.clear();
@@ -27,13 +28,13 @@ void getIntInput(int & val, const string & message,
 	}
 }
 
-void getRows(int & rows)
+void getRows(int& rows)
 {
 	getIntInput(rows, "How many rows? ", true, 0);
 }
 
 
-void getRange(int & start, int & end)
+void getRange(int& start, int& end)
 {
 
 	getIntInput(start, "Choose start number: ");
@@ -41,10 +42,10 @@ void getRange(int & start, int & end)
 
 }
 
-int getRandomNumber(int const start, int const end)
+int getRandomNumber(const int& start, const int& end)
 {
 	random_device rd;
-	uniform_int_distribution<> uid(start, end);
+	uniform_int_distribution<> uid{start, end};
 
 	return uid(rd);
 }
@@ -69,10 +70,12 @@ void randomNumbersToFile(ofstream & ofs)
 int main()
 {
 	
-	ofstream ofs("output.txt");
+	ofstream ofs{"output.txt"};
 	if (ofs.is_open())
 	{
 		randomNumbersToFile(ofs);
+
+		ofs.close();
 	}
 
 

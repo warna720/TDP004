@@ -6,7 +6,7 @@ using namespace std;
 
 // It was hard to write so it should be hard to read...
 
-void printTrimino(vector<int> trimino)
+void printTrimino(const vector<int>& trimino)
 {
 	for (int unsigned x = 0; x < trimino.size(); ++x)
 	{
@@ -15,7 +15,7 @@ void printTrimino(vector<int> trimino)
 	cout << endl;
 }
 
-vector<int> getLineVectorised(string const line)
+vector<int> getLineVectorised(const string& line)
 {
 	//Returns a vectorised string with each char converted to an int
 
@@ -23,13 +23,13 @@ vector<int> getLineVectorised(string const line)
 
 	for (int unsigned x = 0; x <= 2; ++x)
 	{
-		vectorised.push_back(line[x] - '1' + 1);
+		vectorised.push_back(line.at(x) - '0');
 	}
 	
 	return vectorised;
 }
 
-void twistTrimino(vector<int> & trimino)
+void twistTrimino(vector<int>& trimino)
 {
 	//Twists the trimino by pushing back the 
 	//first value and then deleting the first value
@@ -38,14 +38,15 @@ void twistTrimino(vector<int> & trimino)
 	trimino.erase(trimino.begin());
 }
 
-bool correctSize(vector<int> const trimino)
+bool correctSize(const vector<int>& trimino)
 {
 	// Check if three (trimino size) integers given
 
 	return trimino.size() == 3;
 }
 
-bool checkRange(vector<int> const& trimino, int const& start = 0, int const& end = 5)
+bool checkRange(const vector<int>& trimino, const int& start = 0,
+				const int& end = 5)
 {
 	// Checks if trimino values is in range
 
@@ -62,7 +63,7 @@ bool checkTriminoOrder(vector<int> const& trimino)
 
 }
 
-bool checkTrimino(vector<int> trimino, int unsigned const& pass = 1)
+bool checkTrimino(vector<int>& trimino, const unsigned int& pass = 1)
 {
 
 	if (pass > trimino.size())
@@ -76,10 +77,11 @@ bool checkTrimino(vector<int> trimino, int unsigned const& pass = 1)
 	}
 
 	twistTrimino(trimino);
+
 	return checkTrimino(trimino, pass+1);
 }
 
-bool isCorrect(string const line)
+bool isCorrect(const string& line)
 {
 	vector<int> trimino = getLineVectorised(line);
 
@@ -95,26 +97,34 @@ bool isCorrect(string const line)
 	}
 }
 
+void process(ifstream& ifs)
+{
+	string line;
+	int lineNumber{1};
+
+	while(getline(ifs, line))
+	{
+		if ( not(isCorrect(line)) )
+		{
+			cout << lineNumber << endl;
+		}
+		lineNumber++;
+	}
+}
 
 int main()
 {
-	ifstream ifs("trimino1.txt");
+	ifstream ifs{"trimino1.txt"};
 	
 	if(ifs.is_open())
 	{
-		string line;
-		int lineNumber{1};
-
-		while(getline(ifs, line))
-		{
-			if ( not(isCorrect(line)) )
-			{
-				cout << lineNumber << endl;
-			}
-			lineNumber++;
-		}
+		process(ifs);
 
 		ifs.close();
+	}
+	else
+	{
+		cerr << "Error: Could not open file." << endl;
 	}
 
 	return 0;
